@@ -5,7 +5,7 @@ const { Client, LocalAuth } = require('whatsapp-web.js');
 
 const app = express();
 app.use(express.json());
-app.use(cors()); // 🔥 Tambahkan ini
+app.use(cors({ origin: '*' }));
 
 const BEARER_TOKEN = process.env.BEARER_TOKEN; // Ambil token dari .env
 
