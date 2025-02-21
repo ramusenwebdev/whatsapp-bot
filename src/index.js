@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const qrcode = require('qrcode');
 const { Client, LocalAuth } = require('whatsapp-web.js');
+require('dotenv').config();
 
 const app = express();
 app.use(express.json());
@@ -15,6 +16,7 @@ const authenticateToken = (req, res, next) => {
     if (!authHeader) return res.status(403).json({ success: false, message: "Token diperlukan!" });
 
     const token = authHeader.split(' ')[1]; // Format: "Bearer TOKEN"
+    console.log(token, BEARER_TOKEN)
     if (token !== BEARER_TOKEN) return res.status(403).json({ success: false, message: "Token tidak valid!" });
 
     next(); // Lanjut ke endpoint
